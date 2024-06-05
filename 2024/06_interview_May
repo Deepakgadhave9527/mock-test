@@ -5,6 +5,7 @@
 =================================================================================================================================================================================
 
 
+
 1.  ##Pseudo-classes (:) ##:
    - Primarily used to style elements under various states.
    When referring to state, this includes the condition or user interaction,
@@ -62,37 +63,6 @@ that describes the layout and design of elements on a web page.
  -padding is space around the content, 
  -border is a line around the padding, 
  -and margin is space outside the border. 
-
-
-
-
-
-
-
-
-
-=================================================================================================================================================================================## useMemo
-
-useMemo is a React hook.
-It's used for memoization, a technique to optimize performance by caching the result of a computation.
-It re-executes the computation only when its dependencies change.
-Dependencies are specified in an array, and the memoized value is recalculated if any dependency changes.
-It's beneficial for optimizing components with expensive computations or frequent re-renders.
-
-
-
-
-Introduction: useMemo is a React hook used for optimizing performance.
-Purpose: It's designed to memoize, or cache, the result of a computation.
-Dependency Tracking: It tracks dependencies and recalculates only when these dependencies change.
-Dependency Array: You specify dependencies in an array as the second argument.
-Performance Boost: It's particularly useful for optimizing components with expensive calculations or frequent re-renders.
-By employing useMemo, React intelligently manages when to recompute values, thus improving the efficiency of your React components.
-
-
-
-
-
 
 
 
@@ -270,12 +240,10 @@ You've provided a thorough breakdown! Here's a summary based on your input:
 ##Block Elements:
 - Start on a new row.
 - Take up the full width .
-- Display on a new line.
 - Width and height can be set.
 - Examples: `<div>`, `<p>`, `<li>`, etc.
 
  ##Inline Elements:
-- Flow along with the text horizontally.
 - Don't start on a new line.
 - Width and height cannot be set.
 - Take only the width required to display their content.

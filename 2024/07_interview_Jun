@@ -14,7 +14,8 @@ Non-blocking I/O: Callbacks enable non-blocking I/O operations, where the progra
 ================================================================================
 how handle asynchronous operations 
 
-Handling asynchronous operations in programming involves managing tasks that may take variable amounts of time to complete without blocking the execution of other code.
+Handling asynchronous operations in programming involves
+managing tasks that may take variable amounts of time to complete without blocking the execution of other code.
 
 Asynchronous operations can be handled using various techniques, including callbacks, Promises, async/await, and event listeners
 
@@ -25,6 +26,7 @@ Callback hell is a phenomenon where a Callback is called inside another Callback
 It is the nesting of multiple Callbacks inside a function. 
 
 where multiple asynchronous operations are nested within each other as callbacks. This can result in code that is difficult to read, understand, and maintain
+
  The two common ways of escaping the callback heare are by using promises and async/await.
 
 
@@ -92,19 +94,53 @@ These points outline how the event loop enables JavaScript to handle asynchronou
 
 ================================================================================
 
-A curried function is a function that takes multiple arguments one at a time, returning a new function with each argument until all arguments have been provided and the original function is fully applied. This technique allows for partial application of a function, enabling more flexible and reusable code.
+curried function
 
-// Curried function
-function add(x) {
-  return function(y) {
-    return x + y;
-  };
+ curried function is a function that takes one argument at a time, returning a new function each time, until all arguments are provided and the final result is returned.
+
+In JavaScript, a curried function is a function that takes one argument at a time, returning a new function each time, until all arguments are provided and the final result is returned. This allows for partial application and greater flexibility in function composition and usage.
+
+
+function add(a) {
+    return function(b) {
+        return function(c) {
+            return function(d) {
+                return a + b + c + d;
+            };
+        };
+    };
 }
 
-// Using the curried function
-const add5 = add(5); // Partial application: creates a new function that adds 5 to its argument
-console.log(add5(3)); // Output: 8 (5 + 3)
 
+const result = add(1)(2)(3)(4); // Result: 10
+console.log(result);
+
+
+
+
+
+function calculateDiscount(baseDiscount) {
+    return function(minimumPurchase) {
+        return function(isPremiumCustomer) {
+            return function(amount) {
+                let discount = baseDiscount;
+                if (minimumPurchase && amount >= minimumPurchase) {
+                    discount += 10; // Additional discount for reaching minimum purchase
+                }
+                if (isPremiumCustomer) {
+                    discount += 5; // Additional discount for premium customers
+                }
+                return amount - (amount * (discount / 100));
+            };
+        };
+    };
+}
+
+// Apply discounts based on different criteria
+const discountCalculator = calculateDiscount(15)(100)(true);
+const finalPrice = discountCalculator(200); // Result: $170
+
+console.log(finalPrice); // Output: 170
 
 
 
